@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Majordome Prestige — Conciergerie Perche & Mayenne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#C9A961;--gold-l:#E8D4A0;--gold-d:#A68B4A;
+  --black:#07070A;--surface:#0D0D10;--surface2:#131318;
+  --white:#F7F6F2;--muted:rgba(247,246,242,.58);
+  --border:rgba(201,169,97,.14);--glow:0 24px 64px rgba(201,169,97,.18);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);font-weight:300;overflow-x:hidden;line-height:1.65}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:200;
+  background:rgba(7,7,10,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);transition:.4s ease}
+nav.scrolled{border-bottom-color:rgba(201,169,97,.3)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:1.1rem 5%;
+  display:flex;align-items:center;justify-content:space-between}
+.nav-logo{height:48px;object-fit:contain;transition:.3s}
+nav.scrolled .nav-logo{height:36px}
+.nav-cta{padding:.65rem 1.6rem;
+  background:linear-gradient(135deg,var(--gold-d),var(--gold));
+  color:var(--black);font-size:.78rem;font-weight:600;letter-spacing:.8px;
+  text-transform:uppercase;text-decoration:none;border:1px solid var(--gold-l);
+  transition:.3s;white-space:nowrap}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:var(--glow)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:0;padding-top:80px;overflow:hidden}
+.hero-left{padding:6rem 5% 6rem 8%;display:flex;flex-direction:column;justify-content:center}
+.hero-right{position:relative;height:100vh;overflow:hidden}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center;
+  filter:brightness(.75) saturate(1.1)}
+.hero-right::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--black) 0%,rgba(7,7,10,.3) 40%,transparent 100%)}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.7rem;
+  font-size:.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:2rem;
+  opacity:0;animation:up .8s ease .2s both}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+.hero-title{font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,4.5vw,5rem);font-weight:300;line-height:1.08;
+  letter-spacing:-.02em;margin-bottom:1.6rem;
+  opacity:0;animation:up .9s ease .35s both}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-title strong{font-weight:600;display:block}
+.hero-desc{font-size:1.05rem;color:var(--muted);margin-bottom:3rem;max-width:480px;
+  opacity:0;animation:up .9s ease .5s both}
+.hero-btns{display:flex;gap:1.2rem;flex-wrap:wrap;
+  opacity:0;animation:up .9s ease .65s both}
+.btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2.4rem;
+  font-size:.9rem;font-weight:600;text-decoration:none;letter-spacing:.3px;
+  transition:all .3s ease;cursor:pointer;border:none;font-family:'Inter',sans-serif}
+.btn-primary{background:linear-gradient(135deg,var(--gold-d),var(--gold));
+  color:var(--black);border:1px solid var(--gold-l)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:var(--glow)}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(247,246,242,.25)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:3rem;
+  border-top:1px solid var(--border);
+  opacity:0;animation:up .9s ease .8s both}
+.hs{display:flex;flex-direction:column;gap:.35rem}
+.hs-n{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;
+  color:var(--gold);line-height:1}
+.hs-l{font-size:.72rem;color:rgba(247,246,242,.85);font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+
+/* SECTION BASE */
+.s{padding:7rem 5%}
+.s-alt{background:var(--surface)}
+.wrap{max-width:1280px;margin:0 auto}
+.label{display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.68rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.2rem}
+.label::before{content:'';width:24px;height:1px;background:var(--gold)}
+.h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.4rem);
+  font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.2rem}
+.h2 span{color:var(--gold);font-weight:600}
+.lead{font-size:1.05rem;color:var(--muted);max-width:680px;margin-bottom:4rem}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,97,.3),transparent)}
+
+/* SITUATION CARDS */
+.sit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.sit-card{background:var(--surface2);border:1px solid var(--border);
+  padding:2.2rem 1.8rem;position:relative;transition:all .4s;cursor:default}
+.sit-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.sit-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;
+  color:var(--gold);opacity:.2;line-height:1;margin-bottom:1.2rem;transition:opacity .3s}
+.sit-card:hover .sit-num{opacity:.9}
+.sit-card p{font-size:.95rem;line-height:1.7;color:var(--muted)}
+.sit-card:hover p{color:var(--white)}
+
+/* OBJECTIFS */
+.obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.obj-card{background:var(--surface2);border:1px solid var(--border);
+  padding:3rem 2.5rem;transition:all .4s;position:relative;overflow:hidden}
+.obj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold-d),var(--gold));
+  transform:scaleX(0);transition:transform .4s ease;transform-origin:left}
+.obj-card:hover::before{transform:scaleX(1)}
+.obj-card:hover{border-color:rgba(201,169,97,.3);transform:translateY(-6px)}
+.obj-icon{width:52px;height:52px;margin-bottom:2rem}
+.obj-icon svg{width:100%;height:100%}
+.obj-card h3{font-size:1.05rem;font-weight:600;margin-bottom:.9rem;letter-spacing:.3px}
+.obj-card p{font-size:.92rem;color:var(--muted);line-height:1.75}
+
+/* STATEMENT */
+.statement{background:linear-gradient(135deg,var(--gold-d),var(--gold));
+  padding:4rem 3.5rem;text-align:center;margin-top:3.5rem;
+  border:1px solid var(--gold-l);position:relative;overflow:hidden}
+.statement::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.1) 0%,transparent 70%)}
+.statement h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);
+  color:var(--black);font-weight:600;margin-bottom:.6rem;position:relative;z-index:1}
+.statement p{font-size:1.2rem;color:rgba(7,7,10,.8);font-weight:500;position:relative;z-index:1}
+
+/* ABOUT / FOUNDER */
+.about-text{font-size:1.05rem;line-height:2;color:rgba(247,246,242,.85);
+  max-width:900px;margin:0 auto 4rem;text-align:center}
+.about-text strong{color:var(--gold);font-weight:600}
+.founder{display:grid;grid-template-columns:240px 1fr;gap:4rem;align-items:center;
+  background:var(--surface2);border:1px solid var(--border);padding:3.5rem;
+  max-width:960px;margin:0 auto;transition:all .4s;position:relative;overflow:hidden}
+.founder::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,transparent,var(--gold),transparent)}
+.founder:hover{transform:translateY(-4px);border-color:rgba(201,169,97,.3)}
+.founder-img{width:100%;aspect-ratio:1;object-fit:cover;filter:grayscale(20%)}
+.founder-name{font-family:'Cormorant Garamond',serif;color:var(--gold);
+  font-size:2rem;font-weight:500;margin-bottom:.3rem}
+.founder-role{font-size:.85rem;color:var(--muted);font-weight:500;
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:1.8rem}
+.founder-desc{font-size:.95rem;color:var(--muted);line-height:1.85}
+
+/* STRENGTHS */
+.str-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.str-card{background:var(--surface2);border:1px solid var(--border);
+  padding:2.8rem;transition:all .4s}
+.str-card:hover{border-color:var(--gold);transform:translateX(4px)}
+.str-icon{width:44px;height:44px;margin-bottom:1.6rem;color:var(--gold)}
+.str-icon svg{width:100%;height:100%}
+.str-card h3{font-size:1rem;font-weight:600;margin-bottom:.8rem}
+.str-card p{font-size:.9rem;color:var(--muted);line-height:1.75}
+.str-full{grid-column:1/-1;
+  background:linear-gradient(135deg,var(--gold-d),var(--gold));
+  padding:3.5rem;text-align:center;border:1px solid var(--gold-l)}
+.str-full h3{color:var(--black);font-size:1.1rem;font-weight:700;margin-bottom:.8rem}
+.str-full .str-big{font-family:'Cormorant Garamond',serif;color:var(--black);
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700}
+.str-full .str-icon{margin:0 auto 1.5rem}
+.str-full .str-icon svg path,.str-full .str-icon svg circle,.str-full .str-icon svg rect,.str-full .str-icon svg polyline,.str-full .str-icon svg line{stroke:var(--black)}
+
+/* PHOTO GALLERY */
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:280px 280px;gap:4px}
+.gal-main{grid-row:1/3;overflow:hidden}
+.gal-item{overflow:hidden}
+.gal-item img,.gal-main img{width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;filter:brightness(.9)}
+.gal-item:hover img,.gal-main:hover img{transform:scale(1.04);filter:brightness(1)}
+
+/* CHARTE */
+.charte{background:linear-gradient(135deg,var(--gold-d),var(--gold));
+  padding:4.5rem;border:1px solid var(--gold-l);position:relative;overflow:hidden}
+.charte::before{content:'';position:absolute;top:-60%;right:-30%;width:120%;height:220%;
+  background:radial-gradient(circle,rgba(255,255,255,.07) 0%,transparent 65%)}
+.charte-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:2.5px;
+  text-transform:uppercase;color:rgba(7,7,10,.6);margin-bottom:1.5rem}
+.charte h3{font-family:'Cormorant Garamond',serif;color:var(--black);
+  font-size:2.2rem;font-weight:600;margin-bottom:2.5rem;position:relative;z-index:1}
+.charte-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;position:relative;z-index:1}
+.charte-item{display:flex;align-items:center;gap:1.4rem;
+  background:rgba(7,7,10,.18);padding:1.8rem 2rem;
+  border-left:2px solid rgba(7,7,10,.25);transition:all .3s}
+.charte-item:hover{background:rgba(7,7,10,.28);border-left-width:3px}
+.charte-n{width:48px;height:48px;background:var(--black);color:var(--gold);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;flex-shrink:0}
+.charte-item p{color:var(--black);font-size:.98rem;margin:0;font-weight:400}
+.charte-item strong{font-weight:700}
+
+/* PRICING */
+.pricing-intro{background:linear-gradient(135deg,var(--gold-d),var(--gold));
+  text-align:center;padding:4rem 3rem;border:1px solid var(--gold-l);
+  margin-bottom:3rem;position:relative;overflow:hidden}
+.pricing-intro::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.08) 0%,transparent 70%)}
+.pricing-intro h3{font-family:'Cormorant Garamond',serif;color:var(--black);
+  font-size:clamp(1.5rem,3vw,2.2rem);font-weight:600;position:relative;z-index:1;margin-bottom:.5rem}
+.big-rate{font-size:clamp(3.5rem,8vw,5.5rem);font-weight:700;line-height:1}
+.pricing-intro p{color:var(--black);font-size:1.4rem;font-weight:600;position:relative;z-index:1}
+.strike{text-decoration:line-through;opacity:.5}
+
+.p-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.p-card{background:var(--surface2);border:1px solid var(--border);overflow:hidden;transition:all .4s}
+.p-card:hover{border-color:var(--gold);transform:translateY(-8px)}
+.p-top-badge{background:linear-gradient(135deg,var(--gold-d),var(--gold));
+  color:var(--black);padding:.6rem;text-align:center;font-weight:700;font-size:.7rem;letter-spacing:1.5px}
+.p-head{padding:3rem;text-align:center;border-bottom:1px solid var(--border);
+  background:rgba(7,7,10,.4)}
+.p-head h3{color:var(--gold);font-size:1rem;font-weight:700;letter-spacing:2.5px;margin-bottom:1.8rem}
+.p-rate-n{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:700;color:var(--gold);line-height:1}
+.p-rate-sym{font-size:2.5rem;color:var(--gold)}
+.p-rate-sub{font-size:.9rem;color:var(--muted);margin-top:.5rem}
+.p-body{padding:2.5rem}
+.p-section-title{font-size:.72rem;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.p-list{list-style:none;margin-bottom:2rem}
+.p-list li{display:flex;align-items:flex-start;gap:.9rem;padding:.65rem 0;
+  font-size:.9rem;color:var(--muted);border-bottom:1px solid rgba(201,169,97,.06)}
+.p-list li:last-child{border:none}
+.p-list li svg{width:16px;height:16px;flex-shrink:0;margin-top:2px}
+.p-highlight{background:linear-gradient(135deg,var(--gold-d),var(--gold));
+  padding:1.6rem;text-align:center;color:var(--black);
+  font-weight:700;font-size:.95rem;border:1px solid var(--gold-l)}
+
+/* TRANSPARENCY */
+.transp-box{background:var(--surface2);border-left:3px solid var(--gold);
+  padding:2.5rem 3rem;margin-bottom:3rem}
+.transp-box h3{font-size:1.2rem;font-weight:600;margin-bottom:.8rem}
+.transp-box p{color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:.5rem}
+.transp-box .accent{color:var(--gold);font-weight:600;font-size:1rem}
+
+.extras-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.extra-card{background:var(--surface2);border:1px solid var(--border);padding:2.5rem;
+  transition:all .4s;text-align:center}
+.extra-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.extra-icon{width:40px;height:40px;margin:0 auto 1.5rem;color:var(--gold)}
+.extra-icon svg{width:100%;height:100%}
+.extra-card h4{font-size:1rem;font-weight:600;margin-bottom:.6rem}
+.extra-val{font-family:'Cormorant Garamond',serif;font-size:1.8rem;
+  color:var(--gold);font-weight:700;margin:.6rem 0}
+.extra-card p{font-size:.88rem;color:var(--muted);line-height:1.7}
+.extra-sub{font-size:.8rem;color:rgba(201,169,97,.6);margin-top:.4rem}
+
+/* AVIS */
+.reviews-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.review-card{background:var(--surface2);border:1px solid var(--border);
+  padding:2rem;transition:all .4s}
+.review-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.review-tag{font-size:.65rem;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.stars{color:var(--gold);font-size:.9rem;letter-spacing:2px;margin-bottom:1rem}
+.review-text{font-size:.88rem;line-height:1.7;color:var(--muted);
+  font-style:italic;margin-bottom:1rem}
+.review-author{font-size:.78rem;color:rgba(247,246,242,.4);font-weight:500}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:4rem}
+.c-card{background:var(--surface2);border:1px solid var(--border);
+  padding:2.8rem 2rem;text-align:center;transition:all .4s}
+.c-card:hover{border-color:var(--gold);transform:translateY(-6px)}
+.c-icon{width:40px;height:40px;margin:0 auto 1.5rem;color:var(--gold)}
+.c-icon svg{width:100%;height:100%}
+.c-card h3{font-size:.9rem;font-weight:600;margin-bottom:.9rem;letter-spacing:.3px}
+.c-link{display:block;color:var(--gold);text-decoration:none;font-size:.88rem;
+  font-weight:500;transition:all .3s;margin-bottom:.3rem}
+.c-link:hover{color:var(--gold-l)}
+
+.cta-row{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin:3.5rem 0}
+.foot-stats{display:flex;gap:5rem;justify-content:center;flex-wrap:wrap;
+  padding-top:4rem;border-top:1px solid var(--border)}
+.fs{text-align:center}
+.fs-n{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:700;
+  color:var(--gold);display:block;line-height:1}
+.fs-l{font-size:.75rem;color:var(--muted);font-weight:500;
+  letter-spacing:.5px;text-transform:uppercase;margin-top:.4rem}
+
+/* BARRE FIXE */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:300;
+  background:rgba(7,7,10,.96);backdrop-filter:blur(20px);
+  border-top:1px solid rgba(201,169,97,.25);
+  padding:1rem 5%;display:flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.sticky-bar.visible{transform:translateY(0)}
+.sticky-text{display:flex;flex-direction:column;gap:.2rem}
+.sticky-text strong{font-size:.95rem;font-weight:600;color:var(--white)}
+.sticky-text span{font-size:.78rem;color:var(--muted)}
+.sticky-btn{display:inline-flex;align-items:center;gap:.6rem;
+  padding:.85rem 2rem;white-space:nowrap;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold-d),var(--gold));
+  color:var(--black);font-size:.88rem;font-weight:700;
+  border:1px solid var(--gold-l);cursor:pointer;
+  font-family:'Inter',sans-serif;transition:all .3s}
+.sticky-btn:hover{transform:translateY(-2px);box-shadow:var(--glow)}
+@media(max-width:600px){
+  .sticky-bar{flex-direction:column;gap:.8rem;padding:1rem 5%}
+  .sticky-text{text-align:center}
+  .sticky-btn{width:100%;justify-content:center}
+}
+
+/* FOOTER */
+footer{text-align:center;padding:3rem 5%;border-top:1px solid var(--border);
+  background:rgba(0,0,0,.4)}
+.footer-logo{height:44px;object-fit:contain;margin-bottom:1.2rem;opacity:.8}
+footer p{color:var(--muted);font-size:.82rem;line-height:1.9}
+footer a{color:var(--muted);text-decoration:none;transition:.2s}
+footer a:hover{color:var(--gold)}
+
+/* ANIMATIONS */
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;padding-top:70px}
+  .hero-left{padding:5rem 5%;order:2}
+  .hero-right{height:55vw;order:1}
+  .hero-right::after{background:linear-gradient(180deg,var(--black) 0%,transparent 40%,var(--black) 100%)}
+  .sit-grid{grid-template-columns:repeat(2,1fr)}
+  .obj-grid{grid-template-columns:1fr}
+  .str-full{grid-column:1}
+  .reviews-grid,.contact-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px}
+  .gal-main{grid-row:1;grid-column:1/-1}
+}
+@media(max-width:700px){
+  .s{padding:5rem 5%}
+  .hero-stats{gap:1.8rem;flex-wrap:wrap}
+  .hero-btns,.cta-row{flex-direction:column}
+  .btn{width:100%;justify-content:center}
+  .sit-grid,.str-grid,.p-grid,.extras-grid,.charte-grid,
+  .reviews-grid,.contact-grid,.foot-stats{grid-template-columns:1fr}
+  .str-full{grid-column:1}
+  .gallery{grid-template-columns:1fr;grid-template-rows:220px 200px 200px}
+  .gal-main{grid-row:1;grid-column:1}
+  .founder{grid-template-columns:1fr;text-align:center;gap:2rem}
+  .founder-img{max-width:200px;margin:0 auto}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <img src="http://majordomeprestige.fr/wp-content/uploads/2026/01/logos-majordome-1.png" alt="Majordome Prestige" class="nav-logo">
+    <a href="https://tally.so/r/3qg0xG" target="_blank" class="nav-cta">Estimation gratuite</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Conciergerie Innovante · Perche &amp; Mayenne</div>
+    <h1 class="hero-title">
+      Votre rentabilité<br>
+      et votre tranquillité<br>
+      <em>sont nos</em> <strong>priorités</strong>
+    </h1>
+    <p class="hero-desc">Gestion courte durée haut de gamme. Nous maximisons vos revenus tout en vous libérant de chaque contrainte.</p>
+    <div class="hero-btns">
+      <a href="https://tally.so/r/3qg0xG" target="_blank" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Obtenir mon estimation gratuite
+      </a>
+      <a href="tel:+33788812714" class="btn btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        07 88 81 27 14
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><span class="hs-n">58%</span><span class="hs-l">Taux occupation</span></div>
+      <div class="hs"><span class="hs-n">1 252€</span><span class="hs-l">Net / mois</span></div>
+      <div class="hs"><span class="hs-n">+13%</span><span class="hs-l">vs marché</span></div>
+      <div class="hs"><span class="hs-n">Dès 18%</span><span class="hs-l">Commission</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="http://majordomeprestige.fr/wp-content/uploads/2025/07/0587b3df-4080-4c8e-82f5-9fe0a357-Moyen.jpg" alt="Bien géré par Majordome Prestige">
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VOTRE SITUATION -->
+<section class="s">
+  <div class="wrap">
+    <div class="label">Audit</div>
+    <h2 class="h2">Votre situation <span>aujourd'hui</span></h2>
+    <p class="lead">Quelle que soit votre situation, nous avons la solution adaptée.</p>
+    <div class="sit-grid">
+      <div class="sit-card"><div class="sit-num">01</div><p>Vous ne louez pas encore votre bien</p></div>
+      <div class="sit-card"><div class="sit-num">02</div><p>Vous louez en longue durée et souhaitez optimiser</p></div>
+      <div class="sit-card"><div class="sit-num">03</div><p>Vous gérez seul(e) votre location courte durée</p></div>
+      <div class="sit-card"><div class="sit-num">04</div><p>Vous utilisez déjà une conciergerie mais pas satisfait(e)</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OBJECTIFS -->
+<section class="s s-alt">
+  <div class="wrap">
+    <div class="label">Vos objectifs</div>
+    <h2 class="h2">Ce que vous <span>voulez vraiment</span></h2>
+    <p class="lead">Trois objectifs que tous les propriétaires partagent — et que nous atteignons.</p>
+    <div class="obj-grid">
+      <div class="obj-card">
+        <div class="obj-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Générer plus de revenus</h3>
+        <p>Tarification dynamique ajustée quotidiennement selon la demande, les événements et la saisonnalité. Résultat : +13% vs marché standard.</p>
+      </div>
+      <div class="obj-card">
+        <div class="obj-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Gagner du temps</h3>
+        <p>Automatisation complète de la gestion. Check-in, ménage, voyageurs, urgences — tout est pris en charge pour vous libérer totalement.</p>
+      </div>
+      <div class="obj-card">
+        <div class="obj-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Zéro tracas</h3>
+        <p>Ménage, voyageurs, urgences, check-in : tout est géré. Vous êtes propriétaire — pas gestionnaire.</p>
+      </div>
+    </div>
+    <div class="statement">
+      <h2>Vos objectifs = nos objectifs</h2>
+      <p>Vous êtes au bon endroit au bon moment.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GALERIE PHOTOS -->
+<div class="gallery">
+  <div class="gal-main"><img src="http://majordomeprestige.fr/wp-content/uploads/2025/07/0587b3df-4080-4c8e-82f5-9fe0a357-Moyen.jpg" alt="Bien Majordome Prestige"></div>
+  <div class="gal-item"><img src="http://majordomeprestige.fr/wp-content/uploads/2026/01/IMG-20241201-WA0064.jpg" alt="Intérieur"></div>
+  <div class="gal-item"><img src="http://majordomeprestige.fr/wp-content/uploads/2026/01/IMG-20241201-WA0055-1.jpg" alt="Intérieur"></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- QUI SOMMES-NOUS -->
+<section class="s">
+  <div class="wrap">
+    <div class="label">Notre histoire</div>
+    <h2 class="h2">En quoi sommes-nous <span>différents</span></h2>
+    <p class="about-text">
+      Créée par deux experts passionnés de l'immobilier et propriétaires engagés, Majordome Prestige est née d'une nécessité personnelle : face à <strong>l'absence de services répondant à nos hautes attentes</strong>, nous avons construit <strong>la conciergerie que nous aurions voulu avoir</strong>.
+    </p>
+    <div class="founder">
+      <img class="founder-img" src="http://majordomeprestige.fr/wp-content/uploads/2026/01/IMG-20241201-WA0055-1.jpg" alt="Cédric et Hélène">
+      <div>
+        <div class="founder-name">Cédric &amp; Hélène</div>
+        <div class="founder-role">Fondateurs · Majordome Prestige</div>
+        <p class="founder-desc">Après une carrière dans le commerce, propriétaires de plusieurs biens gérés personnellement en courte durée. Experts en rendement locatif, spécialisés dans l'automatisation et l'optimisation. Nous gérons nos biens comme les vôtres — avec rigueur et exigence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- POINTS FORTS -->
+<section class="s s-alt">
+  <div class="wrap">
+    <div class="label">Excellence</div>
+    <h2 class="h2">Nos points <span>forts</span></h2>
+    <div class="str-grid">
+      <div class="str-card">
+        <div class="str-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Approche Humaine</h3>
+        <p>Propriétaires, prestataires et notre équipe formons une équipe soudée. Ensemble, nous visons l'excellence pour des séjours mémorables.</p>
+      </div>
+      <div class="str-card">
+        <div class="str-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <h3>Vision Investisseur</h3>
+        <p>Maximiser le taux de remplissage et garantir des revenus optimaux est notre priorité. Votre réussite est au cœur de notre engagement.</p>
+      </div>
+      <div class="str-card">
+        <div class="str-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Qualité Premium</h3>
+        <p>Chaque détail est pensé pour offrir une expérience inégalée aux voyageurs. Prestations haut de gamme sans compromis.</p>
+      </div>
+      <div class="str-card str-full">
+        <div class="str-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Les commissions les plus compétitives du marché</h3>
+        <div class="str-big">À partir de 18% — vs 30% en conciergerie traditionnelle</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CHARTE -->
+<section class="s">
+  <div class="wrap">
+    <div class="label">Notre engagement</div>
+    <h2 class="h2" style="text-align:center"><span>Charte</span> Garantie Satisfaction</h2>
+    <div class="charte" style="max-width:960px;margin:0 auto">
+      <div class="charte-eyebrow">GARANTIE SATISFACTION</div>
+      <h3>Notre Charte</h3>
+      <div class="charte-grid">
+        <div class="charte-item"><div class="charte-n">1</div><p><strong>Loyauté</strong> envers nos valeurs et nos partenaires</p></div>
+        <div class="charte-item"><div class="charte-n">2</div><p><strong>Engagement</strong> envers l'excellence et la satisfaction</p></div>
+        <div class="charte-item"><div class="charte-n">3</div><p><strong>Transparence</strong> dans nos actions et communications</p></div>
+        <div class="charte-item"><div class="charte-n">4</div><p><strong>Adaptabilité</strong> face aux besoins changeants du marché</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TARIFS -->
+<section class="s s-alt">
+  <div class="wrap">
+    <div class="label">Nos formules</div>
+    <h2 class="h2" style="text-align:center">Les commissions les plus <span>compétitives</span> du marché</h2>
+    <div class="pricing-intro" style="max-width:800px;margin:0 auto 3rem">
+      <h3>À partir de <span class="big-rate">18%</span> de commission</h3>
+      <p>vs <span class="strike">30%</span> en conciergerie traditionnelle</p>
+    </div>
+    <div class="p-grid" style="max-width:960px;margin:0 auto">
+      <div class="p-card">
+        <div class="p-head">
+          <h3>AUTONOMIE</h3>
+          <div><span class="p-rate-n">18</span><span class="p-rate-sym">%</span></div>
+          <div class="p-rate-sub">Vous gérez le ménage</div>
+        </div>
+        <div class="p-body">
+          <div class="p-section-title">Inclus</div>
+          <ul class="p-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Annonces multi-plateformes optimisées</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Photos professionnelles</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tarification dynamique</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Calendriers synchronisés</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Communication voyageurs 24/7</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Check-in / Check-out automatisé</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reporting mensuel détaillé</li>
+          </ul>
+          <div class="p-section-title">À votre charge</div>
+          <ul class="p-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="rgba(247,246,242,.25)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Gestion du ménage</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="rgba(247,246,242,.25)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Coordination prestataires</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-card">
+        <div class="p-top-badge">★ LE PLUS POPULAIRE</div>
+        <div class="p-head">
+          <h3>SÉRÉNITÉ</h3>
+          <div><span class="p-rate-n">23</span><span class="p-rate-sym">%</span></div>
+          <div class="p-rate-sub">Gestion 100% déléguée</div>
+        </div>
+        <div class="p-body">
+          <div class="p-section-title">Tout Autonomie +</div>
+          <ul class="p-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Gestion complète du ménage</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Prestataires qualifiés coordonnés</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Contrôle qualité après chaque séjour</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Gestion urgences 24/7</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Restockage fournitures inclus</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Entretien courant du bien</li>
+          </ul>
+          <div class="p-highlight">Zéro stress — Tout est pris en charge pour vous</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TRANSPARENCE -->
+<section class="s">
+  <div class="wrap">
+    <div class="label">Transparence</div>
+    <h2 class="h2" style="text-align:center">Commissions basées sur vos <span>revenus réels</span></h2>
+    <div class="transp-box" style="max-width:900px;margin:0 auto 3rem">
+      <h3>Hors frais de plateformes &amp; hors taxes de séjour</h3>
+      <p>Vous restez propriétaire de votre annonce et encaissez directement tous les revenus. Notre rémunération est basée uniquement sur ce que vous recevez réellement.</p>
+      <p class="accent">Transparence totale garantie.</p>
+    </div>
+    <div class="extras-grid" style="max-width:960px;margin:0 auto">
+      <div class="extra-card">
+        <div class="extra-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h4>Pack démarrage</h4>
+        <div class="extra-val">Offert</div>
+        <p>Valeur 1 648€ — offert si engagement 3+ mois. Sinon 999€ TTC.</p>
+        <div class="extra-sub">Photos · Annonces · Config · Livret digital</div>
+      </div>
+      <div class="extra-card">
+        <div class="extra-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h4>Boîte à clés</h4>
+        <div class="extra-val">Prêt gratuit</div>
+        <p>Mise à disposition pendant toute la durée du contrat.</p>
+      </div>
+      <div class="extra-card">
+        <div class="extra-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h4>Engagement</h4>
+        <div class="extra-val">Flexible</div>
+        <p>Préavis 1 mois — durée indéterminée. Aucune contrainte long terme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- AVIS -->
+<section class="s s-alt">
+  <div class="wrap">
+    <div class="label">Témoignages</div>
+    <h2 class="h2">Ce qu'ils <span>disent de nous</span></h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-tag">Propriétaire</div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Très bon service, toujours disponible."</p>
+        <div class="review-author">— Daryl Viardot, juin 2025</div>
+      </div>
+      <div class="review-card">
+        <div class="review-tag">Voyageur</div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Logement propre, bien équipé, parfaitement adapté pour un week-end. Serviettes et essentiels à disposition."</p>
+        <div class="review-author">— Isoline Salaün, déc. 2025</div>
+      </div>
+      <div class="review-card">
+        <div class="review-tag">Voyageur</div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Parfait pour quelques jours de détente en famille. Environnement paisible et calme."</p>
+        <div class="review-author">— Léa Levoyer, nov. 2025</div>
+      </div>
+      <div class="review-card">
+        <div class="review-tag">Voyageur</div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Équipe très pro."</p>
+        <div class="review-author">— Antoine Toury, oct. 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="s">
+  <div class="wrap">
+    <div class="label">Contact</div>
+    <h2 class="h2" style="text-align:center">Démarrons votre projet <span>ensemble</span></h2>
+    <p class="lead" style="text-align:center;margin:0 auto 4rem">Réponse sous 24h — 100% gratuit — Zéro engagement</p>
+    <div class="contact-grid">
+      <div class="c-card">
+        <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Téléphone</h3>
+        <a href="tel:+33788812714" class="c-link">07 88 81 27 14</a>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <h3>Email</h3>
+        <a href="mailto:majordomeprestige@gmail.com" class="c-link">majordomeprestige@gmail.com</a>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <h3>Liens</h3>
+        <a href="https://linktr.ee/majordomeprestige" target="_blank" class="c-link">linktr.ee/majordomeprestige</a>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Site web</h3>
+        <a href="https://majordomeprestige.fr/" target="_blank" class="c-link">majordomeprestige.fr</a>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a href="https://tally.so/r/3qg0xG" target="_blank" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Obtenir mon estimation gratuite
+      </a>
+      <a href="tel:+33788812714" class="btn btn-ghost">Appeler maintenant</a>
+    </div>
+    <div class="foot-stats">
+      <div class="fs"><span class="fs-n">58%</span><span class="fs-l">Taux d'occupation</span></div>
+      <div class="fs"><span class="fs-n">+13%</span><span class="fs-l">Revenus vs marché</span></div>
+      <div class="fs"><span class="fs-n">18–23%</span><span class="fs-l">Commission</span></div>
+      <div class="fs"><span class="fs-n">2 sem.</span><span class="fs-l">Mise en ligne</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BARRE FIXE -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-text">
+    <strong>Quel est le potentiel de votre bien ?</strong>
+    <span>Estimation gratuite · Réponse sous 24h · Sans engagement</span>
+  </div>
+  <button class="sticky-btn"
+    data-tally-open="3qg0xG"
+    data-tally-layout="modal"
+    data-tally-width="600"
+    data-tally-hide-title="1"
+    data-tally-overlay="1">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    Obtenir mon estimation gratuite
+  </button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <img src="http://majordomeprestige.fr/wp-content/uploads/2026/01/logos-majordome-1.png" alt="Majordome Prestige" class="footer-logo">
+  <p>Conciergerie Perche &amp; Mayenne<br>
+  <a href="tel:+33788812714">07 88 81 27 14</a> · <a href="mailto:majordomeprestige@gmail.com">majordomeprestige@gmail.com</a><br>
+
+  <span style="opacity:.4;font-size:.75rem">© 2026 Majordome Prestige</span></p>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), {passive:true});
+</script>
+</body>
+</html>
